@@ -1,24 +1,42 @@
 ---
+task: gerarSequenciaPosVenda()
 name: Gerar Sequência Pós-Venda
 description: Generates complete post-service retention sequence — NPS, service-specific reminders, no-show recovery, and seasonal campaigns.
-input:
-  - type: string
-    name: service_performed
-    description: Service that was performed (oil-change, brakes, suspension, etc.)
-  - type: string
-    name: client_name
+responsavel: Auto Consultor
+responsavel_type: Agente
+atomic_layer: Template
+Entrada:
+  - nome: service_performed
+    tipo: string
+    obrigatorio: true
+    description: "oil-change | brakes | suspension | electrical | ac | bodywork | alignment | full-service"
+  - nome: client_name
+    tipo: string
+    obrigatorio: true
     description: Customer first name
-  - type: string
-    name: vehicle
-    description: Vehicle model and year
-  - type: string
-    name: tone
+  - nome: vehicle
+    tipo: string
+    obrigatorio: true
+    description: Vehicle model and year (e.g. Civic 2021)
+  - nome: tone
+    tipo: string
+    obrigatorio: false
     description: "formal | informal"
-output:
-  - type: string
-    name: retention_sequence
-    description: Complete D+0 to D+365 message sequence
-assigned_to: Auto Consultor
+Saida:
+  - nome: retention_sequence
+    tipo: string
+    obrigatorio: true
+    description: Complete D+0 to D+365 message sequence ready to implement
+Checklist:
+  - D+0 delivery message is warm and personal
+  - NPS sent at D+1 with 0-10 emoji scale
+  - NPS routing defined (9-10 → referral, 0-6 → human)
+  - D+7 technical check-in included
+  - Service-specific reminder timing applied
+  - No-show recovery included (H+1, H+3, D+1)
+  - At least 1 seasonal alert for BR calendar
+  - All messages personalized with [Nome] and [Modelo]
+  - All messages in Portuguese (pt-BR)
 ---
 
 Generate a complete post-service WhatsApp retention sequence for a Brazilian auto repair shop.

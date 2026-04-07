@@ -1,24 +1,41 @@
 ---
+task: gerarFluxoAtendimento()
 name: Gerar Fluxo de Atendimento
-description: Generates complete WhatsApp intake flow for the shop — triage menu, CARRO qualification, scheduling, confirmation, and D-1 reminder.
-input:
-  - type: string
-    name: shop_type
+description: Generates complete WhatsApp intake flow — triage menu, CARRO qualification, scheduling, confirmation, and D-1 reminder.
+responsavel: Auto Consultor
+responsavel_type: Agente
+atomic_layer: Template
+Entrada:
+  - nome: shop_type
+    tipo: string
+    obrigatorio: true
     description: "independent-shop | autocenter | dealership"
-  - type: string
-    name: shop_name
+  - nome: shop_name
+    tipo: string
+    obrigatorio: true
     description: Name of the shop
-  - type: string
-    name: services
+  - nome: services
+    tipo: string
+    obrigatorio: true
     description: Comma-separated list of main services
-  - type: string
-    name: volume
-    description: Daily WhatsApp message volume (low/medium/high)
-output:
-  - type: string
-    name: triage_flow
-    description: Complete WhatsApp flow with all messages
-assigned_to: Auto Consultor
+  - nome: volume
+    tipo: string
+    obrigatorio: false
+    description: "Daily WhatsApp message volume: low | medium | high"
+Saida:
+  - nome: triage_flow
+    tipo: string
+    obrigatorio: true
+    description: Complete WhatsApp flow with all messages ready to implement
+Checklist:
+  - Triage menu has maximum 4 options
+  - Qualification uses maximum 2 questions per message
+  - CARRO framework applied
+  - Time slot offer includes 3 options
+  - Booking confirmation includes date, time, service, address
+  - D-1 reminder includes confirm/reschedule option
+  - Human handoff available at every step
+  - All messages in Portuguese (pt-BR)
 ---
 
 Generate a complete WhatsApp customer service flow for a Brazilian auto repair shop.

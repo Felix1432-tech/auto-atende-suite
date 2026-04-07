@@ -1,9 +1,12 @@
 name: "auto-atende-suite"
 version: "1.0.0"
-description: "Complete AI customer service system for Brazilian auto repair shops — from first WhatsApp message to loyal returning customer. Includes intake flows, CARRO qualification, scheduling, NPS, no-show recovery, and seasonal retention."
+description: "Complete AI customer service system for Brazilian auto repair shops — from first WhatsApp message to loyal returning customer."
 author: "claudio_felix"
 license: "MIT"
 price: 49.90
+aios:
+  minVersion: "2.1.0"
+  type: squad
 tags:
   - automotive
   - whatsapp
@@ -13,9 +16,9 @@ tags:
 
 components:
   agents:
-    - agents/auto-consultor.md
+    - auto-consultor.md
   tasks:
-    - tasks/gerar-fluxo-atendimento.md
-    - tasks/gerar-sequencia-pos-venda.md
+    - gerar-fluxo-atendimento.md
+    - gerar-sequencia-pos-venda.md
   workflows:
-    - workflows/jornada-cliente-completa.md
+    - jornada-cliente-completa.md
